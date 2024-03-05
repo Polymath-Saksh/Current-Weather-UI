@@ -1,4 +1,4 @@
-from localkeys import get_key
+from secret import get_key
 from geocoding import city_to_geocoding
 import requests
 
