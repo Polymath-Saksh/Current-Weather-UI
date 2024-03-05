@@ -21,14 +21,15 @@
     <div class="card-body">
       <h2 class="card-title">Search by Locations</h2>
       <p>Write the location to get the weather</p>
-      <form action="" method="POST" id="search-bar">
-        <input class="input is-large" type="text" placeholder="   Location..." id="locationInput">
+      <form action="{% url '/weather' %}" method="POST" id="search-bar">
+        {% csrf_token %}
+        <input class="input is-large" type="text" placeholder="   Location..." id="location">
         <i class="fa-solid fa-magnifying-glass-location"></i>
+        <div class="card-actions justify-end">
+          <input type='submit' class="btn glass"></input>
       </form>
-      <div class="card-actions justify-end">
-        <button class="btn glass">Search</button>
-      </div>
     </div>
+  </div>
   </div>
 
 </body>

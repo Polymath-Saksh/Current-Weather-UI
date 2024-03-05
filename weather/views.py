@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 ## return the index.html file
 def index(request):
-
-    return render(request, 'index.html')
+    if request.method == 'POST':
+        return redirect('home')
+    else:
+        return render(request, 'index.html')
