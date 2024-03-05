@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Input Location</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+  <div class='background'>
+    <video autoplay loop muted id="myVideo">
+      <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="card w-96 glass">
+    <figure>
+      <img class=image-class src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">Search by Locations</h2>
+      <p>Write the location to get the weather</p>
+      <form method="POST" id="search-bar">
+        {% csrf_token %}
+        <input class="input is-large" type="text" placeholder="Location" name="location" id="location">
+        <i class="fa-solid fa-magnifying-glass-location"></i>
+        <div class="card-actions justify-end">
+          <input type='submit' class="btn glass">
+        </div>
+      </form>
+
+      {% if weather_data %}
+      <div class="weather-result">
+        <p>Weather for {{ location }}:</p>
+        <p>Temperature: {{ weather_data.temperature }} degree Celsius;</p>
+        <p>Pressure: {{ weather_data.pressure }} atm</p>
+        <p>Humidity: {{ weather_data.humidity }}%</p>
+        <p>Description: {{ weather_data.description }}</p>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 import requests
-from secret import *
+from weather.secret import *
 
 def city_to_geocoding(city):
     # Get the key from the localkeys.py file
@@ -28,15 +28,3 @@ def city_to_geocoding(city):
     except requests.exceptions.RequestException as e:
         print("Error during API request:", e)
         return None, None
-
-print(city_to_geocoding("Amsterdam"))
-##########################
-##########################
-#                        #
-#                        #
-#                        #
-#    copy pasta below    #
-#             |          #
-#             |          #
-#             |          #
-##########################

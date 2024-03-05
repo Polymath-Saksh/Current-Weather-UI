@@ -16,14 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from weather import views as wviews
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from home import views as hviews
-
+from weather import views as weather_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('weather/',hviews.index , name='weather'),
-    path('', wviews.index, name='home'),
-] 
-
-urlpatterns += staticfiles_urlpatterns()
+    path('', weather_views.index, name='home')
+]
