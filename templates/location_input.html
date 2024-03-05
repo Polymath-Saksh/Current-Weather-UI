@@ -34,12 +34,13 @@
       {% if weather_data %}
       <div class="weather-result">
         <p>Weather for {{ location }}:</p>
-        <p>Temperature: {{ weather_data.temperature }} degree Celsius;</p>
+        <p>Temperature: {{ weather_data.temp }} K</p>
         <p>Pressure: {{ weather_data.pressure }} atm</p>
         <p>Humidity: {{ weather_data.humidity }}%</p>
         <p>Description: {{ weather_data.description }}</p>
       </div>
       {% endif %}
+      <button href="" class="btn glass">Reset</a>
 
     </div>
   </div>

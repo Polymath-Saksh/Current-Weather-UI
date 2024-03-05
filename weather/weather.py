@@ -32,9 +32,14 @@ def program(location):
         current_temperature = current_data["temp"]
         current_pressure = current_data["pressure"]
         current_humidity = current_data["humidity"]
-        weather_data = current_data["weather"]
-        weather_description = weather_data[0]["description"]
+        weather_description = current_data["weather"][0]["description"]
 
-        return current_data
+        output = {
+            "temp": current_temperature,
+            "pressure": current_pressure,
+            "humidity": current_humidity,
+            "description": weather_description
+            }
+        return output
     else:
-        return 'None'
+        return None
