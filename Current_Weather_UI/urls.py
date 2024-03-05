@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from weather import views
+from weather import views as wviews
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from home import views as hviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('weather/',hviews.index , name='weather'),
+    path('', wviews.index, name='home'),
 ] 
 
 urlpatterns += staticfiles_urlpatterns()
