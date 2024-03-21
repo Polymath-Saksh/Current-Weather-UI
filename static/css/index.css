@@ -21,11 +21,9 @@ body {
 	/* background-repeat: no-repeat; */
 }
 
-div {
+/* div {
 	/* border: 1px solid black; */
-}
-
-.search-bar {
+*/ .search-bar {
 	margin-top: 50px;
 	height: 60px;
 	width: 40%;
@@ -212,14 +210,13 @@ div {
 	background-color: #00000022;
 	/* border-right: 1px solid black; */
 }
-
+/* 
 .sun-gap {
-	/* background-color: #00000041; */
-}
+	background-color: #00000041; */
 
+/* 
 .sunset {
-	/* border-left: 1px solid black; */
-}
+	border-left: 1px solid black; */
 
 .sunrise-icon,
 .sunset-icon {
