@@ -1,49 +1,175 @@
 {% load static %}
-
+<!DOCTYPE html>
 <html>
 
 <head>
+  <title></title>
   <meta charset="utf-8">
-  <title>Input Location</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
-  <div class='background'>
-    <video autoplay loop muted id="myVideo">
-      <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="card w-96 glass">
-    <figure>
-      <img class=image-class src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!" />
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title">Search by Locations</h2>
-      <p>Write the location to get the weather</p>
-      <form method="POST" id="search-bar">
+  <div class="search-bar">
+    <div class="search-bar-inner">
+      <div class="location-icon">
+        <object type="image/svg+xml" data="{% static 'icons/location-pin.svg' %}" class="location-svg"></object>
+      </div>
+      <form method="POST" class="search-form">
         {% csrf_token %}
-        <input class="input is-large" type="text" placeholder="Location" name="location" id="location">
-        <i class="fa-solid fa-magnifying-glass-location"></i>
-        <div class="card-actions justify-end">
-          <input type='submit' class="btn glass">
+        <input type="text" name="location" class="location" id="location" placeholder="" required>
+        <div class="search-icon">
+          <button type="submit" class="search-button">
+            <object type="image/svg+xml" data="{% static 'icons/search.svg' %}" class="search-svg"></object></button>
         </div>
       </form>
-
-      {% if weather_data %}
-      <div class="weather-result">
-        <p>Weather for {{ location }}:</p>
-        <p>Temperature: {{ weather_data.temp }} K</p>
-        <p>Pressure: {{ weather_data.pressure }} atm</p>
-        <p>Humidity: {{ weather_data.humidity }}%</p>
-        <p>Description: {{ weather_data.description }}</p>
+      <div class="refresh-icon">
+        <button type="button">
+          <object type="image/svg+xml" data="{% static 'icons/refresh.svg' %}" class="refresh-svg" height="30"
+            width="auto"></object>
+        </button>
       </div>
-      {% endif %}
-      <button href="" class="btn glass">Reset</a>
-
     </div>
   </div>
+  <div class="top-container">
+    <div class="top-inner-container">
+      <div class="city-name">
+        <p class="city">{{location}}</p>
+      </div>
+      <div class="top-inner-inner-container">
+        <div class="date">
+          <p class="date-info" id="date-info">{{weather_data.curr_date}}</p>
+        </div>
+        <div class="time">
+          <p class="time-info" id="time-info">03:59:50</p>
+        </div>
+        <div>
+          <p class="year" id="year">{{weather_data.year}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-container">
+      <div class="info-label">
+        <div class="stats-label stats-label-top">
+          <p>Pressure</p>
+        </div>
+        <div class="stats-label">
+          <p>Humidity</p>
+        </div>
+        <div class="stats-label">
+          <p>Cloud(%)</p>
+        </div>
+        <div class="stats-label">
+          <p>Visibility</p>
+        </div>
+        <div class="stats-label">
+          <p>Wind-speed</p>
+        </div>
+        <div class="stats-label">
+          <p>Wind-direction</p>
+        </div>
+      </div>
+      <div class="info-stats">
+        <div class="stats-info stats-info-top">
+          <p class="p-stats">{{weather_data.pressure}} mb</p>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="{% static 'icons/barometer.svg' %}" class="barometer-svg"></object>
+          </div>
+        </div>
+        <div class="stats-info">
+          <p class="p-stats">{{weather_data.humidity}}%</p>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="{% static 'icons/humidity.svg' %}" class="humidity-svg"></object>
+          </div>
+        </div>
+        <div class="stats-info">
+          <p class="p-stats" id="cloud-percent">{{weather_data.cloudiness}}</p>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="{% static 'icons/cloud.svg' %}" class="cloud-svg"></object>
+          </div>
+        </div>
+        <div class="stats-info">
+          <p class="p-stats">{{weather_data.visibility}} KM</p>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="{% static 'icons/visible.svg' %}" class="visible-svg"></object>
+          </div>
+        </div>
+        <div class="stats-info">
+          <p class="p-stats" id="wind-speed">{{weather_data.wind_speed}} M/S</p>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="" class="wind-beaufort-svg" id="wind-beaufort"></object>
+          </div>
+        </div>
+        <div class="stats-info">
+          <div class="wind">
+            <p class="" id="wind-direction">{{weather_data.wind_direction}}</p>
+            <div class="degree"><object type="image/svg+xml" data="{% static 'icons/degree.svg' %}"
+                class="degree-svg"></object></div>
+          </div>
+          <div class="icon-container">
+            <object type="image/svg+xml" data="{% static 'icons/wind-degree.svg' %}" class="wind-degree-svg"
+              id="wind-degree-svg"></object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-container">
+    <div class="bottom-inner-left-container">
+      <div class="bottom-inner-left-container-gap"></div>
+      <div class="temperature">
+        <div class="temp-icon">
+          <object type="image/svg+xml" data="{% static 'icons/thermometer.svg' %}" class="thermometer-svg"></object>
+        </div>
+        <div class="temp-data">
+          <div class="temp-primary">
+            <p class="temp-norm">{{ weather_data.temp }}</p>
+            <object type="image/svg+xml" data="{% static 'icons/celsius.svg' %}" class="celsius-svg"></object>
+          </div>
+          <div class="temp-secondary">
+            <p class="min-max">{{weather_data.max_temp}}</p>
+            <object type="image/svg+xml" data="{% static 'icons/celsius.svg' %}" class="mini-celsius-svg"></object>
+            <p class="min-max-2">|{{weather_data.min_temp}}</p>
+            <object type="image/svg+xml" data="{% static 'icons/celsius.svg' %}" class="mini-celsius-svg"></object>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-inner-left-bottom">
+        <div class="bottom-inner-left-bottom-gap"></div>
+        <div class="temperature-description">
+          <p class="temp-desc" id="temp-desc">{{weather_data.description}}</p>
+          <p class="part">|</p>
+          <p class="day-time" id="day-time">{{weather_data.day_night}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-inner-middle-container">
+      <object type="image/svg+xml" data="" class="weather-svg" id="weather-svg"></object>
+    </div>
+    <div class="bottom-inner-right-container">
+      <div class="bottom-inner-right-gap"></div>
+      <div class="bottom-right-inner-inner">
+        <div class="sunrise">
+          <div class="sunrise-time">
+            <p class="sunrise-time-value" id="sunrise-time-value">{{weather_data.sunset}}</p>
+          </div>
+          <div class="sunrise-icon">
+            <object type="image/svg+xml" data="{% static 'icons/sunrise.svg' %}" class="sunrise-svg"></object>
+          </div>
+        </div>
+        <div class="sun-gap"></div>
+        <div class="sunset">
+          <div class="sunset-time">
+            <p class="sunset-time-value" id="sunset-time-value">{{weather_data.sunrise}}</p>
+          </div>
+          <div class="sunset-icon">
+            <object type="image/svg+xml" data="{% static 'icons/sunset.svg' %}" class="sunset-svg"></object>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="{% static 'js/script.js' %}"></script> -->
 </body>
 
 </html>
