@@ -1,2 +1,2 @@
 # Current-Weather-UI 
-## this helps us know the weather of any particular city
+## The tool is used to forecast current weather around the world.
