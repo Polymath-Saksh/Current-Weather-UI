@@ -19,14 +19,14 @@
         {% csrf_token %}
         <input type="text" name="location" class="location" id="location" placeholder="" required>
         <div class="search-icon">
-          <button type="submit" class="search-button">
-            <object type="image/svg+xml" data="{% static 'icons/search.svg' %}" class="search-svg"></object></button>
+          <button type="submit" class="search-button", id="search-button">
+            <img data="{% static 'icons/search.svg' %}" class="search-svg"></img></button>
         </div>
       </form>
       <div class="refresh-icon">
-        <button type="button">
-          <object type="image/svg+xml" data="{% static 'icons/refresh.svg' %}" class="refresh-svg" height="30"
-            width="auto"></object>
+        <button type="submit" class="refresh-button" is="refresh-button">
+          <img data="{% static 'icons/refresh.svg' %}" class="refresh-svg" height="30"
+            width="auto"></img>
         </button>
       </div>
     </div>
@@ -138,7 +138,6 @@
         <div class="bottom-inner-left-bottom-gap"></div>
         <div class="temperature-description">
           <p class="temp-desc" id="temp-desc">{{weather_data.description}}</p>
-          <p class="part">|</p>
           <p class="day-time" id="day-time">{{weather_data.day_night}}</p>
         </div>
       </div>
