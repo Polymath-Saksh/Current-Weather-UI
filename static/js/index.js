@@ -40,7 +40,7 @@ updateTime();
 
 function changeBackground() {
       var dayTimeElement = document.getElementById('day-time');
-      var background = 'day.jpg'; // Default background image
+      var background = 'images/day.jpg'; // Default background image
 
       // Check the value of the day-time element and set the background accordingly
       if (dayTimeElement.innerHTML.trim() === 'Day') {
@@ -61,3 +61,23 @@ function changeBackground() {
 
     // Call the function once to set the initial background
     changeBackground();
+
+
+function rotateCompass() {
+    // Get the wind direction value
+    var windDirection = document.getElementById('wind-direction').innerHTML;
+    
+    // Get the compass container
+    var degreeContainer = document.getElementById('wind-degree-svg');
+    
+    // Set the rotation angle based on wind direction
+    var rotationAngle = parseFloat(windDirection); // Assuming wind direction is in degrees
+    
+    // Apply the rotation to the compass container
+    degreeContainer.style.transform = 'rotate(' + rotationAngle + 'deg)';
+}
+
+// Call the rotateCompass function to rotate the compass initially
+rotateCompass();
+
+  
