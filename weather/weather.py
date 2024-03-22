@@ -1,7 +1,8 @@
 from weather.secret import get_key
 from weather.geocoding import city_to_geocoding
 import requests
-from datetime import datetime
+from datetime import datetime , timedelta, timezone
+import pytz
 
 # The program utilizes the OpenWeatherMap API to get the weather data
 
@@ -31,7 +32,7 @@ def program(location):
         # Get the current data from the JSON response
         current_data = x["current"]
         current_temperature = current_data["temp"]
-        current_pressure = current_data["pressure"]
+        current_pressure = round(current_data["pressure"]/1013.25,3)
         current_humidity = current_data["humidity"]
         weather_description = current_data["weather"][0]["main"]
         cloudiness = current_data["clouds"]
@@ -40,10 +41,18 @@ def program(location):
         wind_direction = current_data["wind_deg"]
         max_temp = x["daily"][0]["temp"]["max"]
         min_temp = x["daily"][0]["temp"]["min"]
-        #Capture sunrise and sunset and convert to 00:00 in 24 hour format
-        sunrise = datetime.fromtimestamp(x["daily"][0]["sunrise"])
-        sunset = datetime.fromtimestamp(x["daily"][0]["sunset"])
+        # Get the timezone from the API response
+        timezone = pytz.timezone(x["timezone"])
+
+        # Capture sunrise and sunset and convert to datetime objects in the city's timezone
+        sunrise = datetime.fromtimestamp(x["daily"][0]["sunrise"], tz=timezone)
+        sunset = datetime.fromtimestamp(x["daily"][0]["sunset"], tz=timezone)
         curr_date = date_converter(str(sunrise).split()[0])
+        time_zone_offset = x["timezone_offset"]
+        current_time = get_current_time(time_zone_offset,tz = timezone)
+        #Convert sunrise and sunset to timestamp format then check if it is day or night
+        day_or_night = day_night(sunrise.timestamp(),sunset.timestamp(),current_time.timestamp(), timezone)
+
         output = {
             "temp": current_temperature,
             "pressure": current_pressure,
@@ -58,7 +67,9 @@ def program(location):
             "sunrise": str(sunrise).split()[1][:5],
             "sunset": str(sunset).split()[1][:5],
             "curr_date": f'{curr_date[1]} {curr_date[0]}',
-            "year": curr_date[2]
+            "year": curr_date[2],
+            "day_night": day_or_night,
+            "curr_time": str(current_time).split()[1][:8]
             }
         return output
     else:
@@ -84,8 +95,37 @@ def date_converter(date):
     }
     return [day, months[mth], yr]
 
-def day_night(sunrise,sunset,current_time):
-    if sunrise < current_time < sunset:
+from datetime import datetime, timedelta
+
+from datetime import datetime, timedelta
+
+def day_night(sunrise_timestamp, sunset_timestamp, current_time_timestamp, tz):
+    # Convert Unix timestamps to datetime objects in the city's timezone
+    sunrise = datetime.fromtimestamp(sunrise_timestamp, tz=tz)
+    sunset = datetime.fromtimestamp(sunset_timestamp, tz=tz)
+    current_time = datetime.fromtimestamp(current_time_timestamp, tz=tz)
+
+    # Determine if it's sunrise, sunset, day, or night
+    sunrise_range_start = sunrise - timedelta(hours=1)
+    sunrise_range_end = sunrise + timedelta(hours=1)
+    sunset_range_start = sunset - timedelta(hours=1)
+    sunset_range_end = sunset + timedelta(hours=1)
+
+    if sunrise_range_start <= current_time <= sunrise_range_end:
+        return "Sunrise"
+    elif sunset_range_start <= current_time <= sunset_range_end:
+        return "Sunset"
+    elif sunrise <= current_time <= sunset:
         return "Day"
     else:
         return "Night"
+
+
+def get_current_time(time_zone_offset, tz):
+    # Get the current time in UTC
+    current_utc_time = datetime.now(timezone.utc)
+
+    # Convert the current time to the city's timezone
+    current_time = current_utc_time.astimezone(tz)
+
+    return current_time
