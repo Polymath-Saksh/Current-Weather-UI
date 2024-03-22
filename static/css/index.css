@@ -299,7 +299,8 @@ button {
 .sunrise-time-value {
 	color: white;
 	font-size: 48px;
-	margin-left: 20px;
+	margin-left: 10px;
+
 }
 .temp-desc,
 .min-max,

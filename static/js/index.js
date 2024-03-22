@@ -275,3 +275,30 @@ function center(){
 }
 
 center();
+
+hasRun = false;
+
+window.onload = function() {
+    // if (!window.onload.hasRun) {
+    //     var form = document.getElementById("search-form");
+    //     var input = document.getElementById("location");
+    //     input.value = ".";
+    //     form.submit();
+    //     window.onload.hasRun = true;
+    // }
+    fitText();
+}
+
+function fitText() {
+    var container = document.getElementById('city-name');
+    var text = document.getElementById('city');
+    var containerWidth = container.offsetWidth;
+    var textWidth;
+    do {
+        var fontSize = parseFloat(window.getComputedStyle(text, null).getPropertyValue('font-size'));
+        var newFontSize = fontSize - 1;
+        text.style.fontSize = newFontSize + 'px';
+        textWidth = text.offsetWidth;
+    } while (textWidth > (containerWidth - 10) && newFontSize > 0);
+}
+

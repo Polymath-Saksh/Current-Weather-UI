@@ -11,7 +11,7 @@ def program(location):
     API_KEY = get_key()
 
     # Get the city name from the user do error handling, the default location for no input is N/A
-    if location == 'N/A':
+    if location == '.':
         city = get_user_location()
     else:
         city = location

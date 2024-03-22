@@ -15,25 +15,25 @@
       <div class="location-icon">
         <object type="image/svg+xml" data="{% static 'icons/location-pin.svg' %}" class="location-svg"></object>
       </div>
-      <form method="POST" class="search-form">
+      <form method="POST" class="search-form" id="search-form">
         {% csrf_token %}
-        <input type="text" name="location" class="location" id="location" placeholder="" value="N/A" required>
+        <input type="text" name="location" class="location" id="location" placeholder="" required>
         <div class="search-icon">
           <button type="submit" class="search-button" , id="search-button">
             <img src="{% static 'images/search.png' %}" class="search-svg"></img></button>
         </div>
-      </form>
       <div class="refresh-icon">
         <button type="submit" class="refresh-button" id="refresh-button">
           <img src="{% static 'images/refresh.png' %}" class="refresh-svg" height="30" width="auto"></img>
         </button>
       </div>
+    </form>
     </div>
   </div>
   <div class="top-container">
     <div class="top-inner-container">
-      <div class="city-name">
-        <p class="city">{{location}}</p>
+      <div class="city-name" id="city-name">
+        <p class="city" id="city">{{weather_data.city}}</p>
       </div>
       <div class="top-inner-inner-container">
         <div class="date">
@@ -169,6 +169,20 @@
   </div>
   <!-- <script src="{% static 'js/temp.js' %}"></script> -->
   <script src="{% static 'js/index.js' %}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var form = document.getElementById("search-form");
+      var inputField = document.getElementById("location");
+      function fillAndSubmitForm(value = ".") {
+        inputField.value = value;
+        form.submit();
+      }
+      var refresh_click = document.getElementById('refresh-button');
+      refresh_click.addEventListener('click', function() {
+        fillAndSubmitForm();
+      });
+    });
+  </script>
 </body>
 
 </html>
