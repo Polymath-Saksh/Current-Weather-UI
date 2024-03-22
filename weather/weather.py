@@ -1,17 +1,20 @@
 from weather.secret import get_key
 from weather.geocoding import city_to_geocoding
-import requests
+from weather.curr_city import get_user_location
 from datetime import datetime , timedelta, timezone
 import pytz
-
+import requests
 # The program utilizes the OpenWeatherMap API to get the weather data
 
 def program(location):
     # Get the key from the localkeys.py file
     API_KEY = get_key()
 
-    # Get the city name from the user
-    city = location
+    # Get the city name from the user do error handling, the default location for no input is N/A
+    if location == 'N/A':
+        city = get_user_location()
+    else:
+        city = location
     lat, lon = city_to_geocoding(city)
 
     # If latitude and longitude are None, city not found
@@ -69,7 +72,8 @@ def program(location):
             "curr_date": f'{curr_date[1]} {curr_date[0]}',
             "year": curr_date[2],
             "day_night": day_or_night,
-            "curr_time": str(current_time).split()[1][:8]
+            "curr_time": str(current_time).split()[1][:8],
+            "city": city
             }
         return output
     else:

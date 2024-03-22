@@ -17,7 +17,7 @@
       </div>
       <form method="POST" class="search-form">
         {% csrf_token %}
-        <input type="text" name="location" class="location" id="location" placeholder="" required>
+        <input type="text" name="location" class="location" id="location" placeholder="" value="N/A" required>
         <div class="search-icon">
           <button type="submit" class="search-button" , id="search-button">
             <img src="{% static 'images/search.png' %}" class="search-svg"></img></button>
