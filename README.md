@@ -31,10 +31,6 @@ Humidity (in percentage): 80%
 Description: clear sky
 
 
-## Working View of the Program
-- [Screenshot](Working_SS.jpg)
-- [Video](Working_Video.mp4)
-
 ## Architectural Diagram
 
     +------------------+
@@ -79,7 +75,7 @@ Before running this program, ensure you have the following prerequisites:
     - This file contains the code for the geocoding function.
     - The geocoding function takes in a city name as a parameter and returns the latitude and longitude of the city.
 
-### localkeys.py (To be created)
+### secret.py (To be created)
     - This file contains the API key for the OpenWeatherMap API.
     - The API key is stored in the variable API_KEY.
     - Disclaimer: This file is not included in the repository for security reasons. You will have to create this file yourself, and not include it in the repository. To do so, create a .gitignore file and add localkeys.py to it.
@@ -134,10 +130,10 @@ To use this program, follow these steps:
 - Saksham Kumar ([Polymath-Saksh](https://github.com/Polymath-Saksh))
 - Aloukik Joshi ([aloukikjoshi](https://github.com/aloukikjoshi))
 - Nihal Pandey ([neurotoxin5060](https://github.com/neurotoxin5060))
-- Dhruv Bavaria ([DHRUV-5341](https://github.com/DHRUV-5341))
+- Ankit Raj ([ankitraj5670](https://github.com/ankitraj5670))
 
 ## License
 
 This project is licensed under MIT License - see the [LICENSE](LICENSE) file for details.
 
-Copyright &copy; to the contributing authors and Fastest Coder Hackathon Organisation.
+Copyright &copy; to the contributing authors.
