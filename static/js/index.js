@@ -276,18 +276,20 @@ function center(){
 
 center();
 
-hasRun = false;
-
 window.onload = function() {
-    // if (!window.onload.hasRun) {
-    //     var form = document.getElementById("search-form");
-    //     var input = document.getElementById("location");
-    //     input.value = ".";
-    //     form.submit();
-    //     window.onload.hasRun = true;
-    // }
+    var formSubmitted = sessionStorage.getItem("formSubmitted");
+    if (!formSubmitted) {
+        document.getElementById("location").value = ".";
+        document.getElementById("search-form").submit();
+        sessionStorage.setItem("formSubmitted", true);
+    }
     fitText();
 }
+
+document.getElementById( 'search-button' ).addEventListener("submit", function(event) {
+    sessionStorage.removeItem("formSubmitted");
+    this.submit();
+});
 
 function fitText() {
     var container = document.getElementById('city-name');

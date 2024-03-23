@@ -1,6 +1,6 @@
-# Current Weather Report using OpenWeatherMap API
+# Current Weather Forcast using OpenWeatherMap API
 
-This program utilizes the OpenWeatherMap Geocoding API to convert a city name to its corresponding latitude and longitude coordinates. It provides a simple way to retrieve the geographic information of a city using the OpenWeatherMap service.
+This project utilizes the OpenWeatherMap Geocoding API to convert a city name to its corresponding latitude and longitude coordinates. It provides a simple way to retrieve the geographic information of a city using the OpenWeatherMap service.
 
 ## Usage
 
@@ -134,7 +134,7 @@ To use this program, follow these steps:
 - Saksham Kumar ([Polymath-Saksh](https://github.com/Polymath-Saksh))
 - Aloukik Joshi ([aloukikjoshi](https://github.com/aloukikjoshi))
 - Nihal Pandey ([neurotoxin5060](https://github.com/neurotoxin5060))
-- Dhruv Bavaria ([DHRUV-5341](https://github.com/DHRUV-5341))
+- Ankit Raj ([ankitraj5670](https://github.com/ankitraj5670))
 
 ## License
 
