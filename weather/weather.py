@@ -19,8 +19,8 @@ def program(location):
 
     # If latitude and longitude are None, city not found
     if lat is None or lon is None:
-        print("City Not Found")
-        exit()
+        lat, lon = city_to_geocoding("London")
+        city = "London"
 
     # Get the URL for the Weather API call
     base_url = f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
