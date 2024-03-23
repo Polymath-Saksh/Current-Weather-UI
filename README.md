@@ -4,7 +4,8 @@ This program utilizes the OpenWeatherMap Geocoding API to convert a city name to
 
 ## Usage
 
-### Disclaimer: Add your API Key, refer to the Prerequisites section.
+### Disclaimer: Add your API Key, refer to the Prerequisites section
+
 To use this program, run the following command line interface:
 
 python
@@ -15,13 +16,12 @@ It will ask you to enter the name of the city. Enter the name of the city and pr
 ### Example
 
 python
-Enter the city name: 
-
-
+Enter the city name: London
 Input the city name, for example, London. Use only ISO 3166 country codes, as per Geocoding API documentation.
-For others, it will throw an invalid city error.
+For others, it fetch a placeholder data.
 
-### Output:
+### Output
+
 python
 Enter the city name: London
 
@@ -29,7 +29,6 @@ Temperature: 19.43 ℃
 Atmospheric pressure: 0.01 atm
 Humidity (in percentage): 80%
 Description: clear sky
-
 
 ## Architectural Diagram
 
@@ -57,8 +56,6 @@ Description: clear sky
     |    Display       |
     +------------------+
 
-
-
 ## Prerequisites
 
 Before running this program, ensure you have the following prerequisites:
@@ -72,15 +69,18 @@ Before running this program, ensure you have the following prerequisites:
 ## File Description
 
 ### geocoding.py
+
     - This file contains the code for the geocoding function.
     - The geocoding function takes in a city name as a parameter and returns the latitude and longitude of the city.
 
 ### secret.py (To be created)
+
     - This file contains the API key for the OpenWeatherMap API.
     - The API key is stored in the variable API_KEY.
     - Disclaimer: This file is not included in the repository for security reasons. You will have to create this file yourself, and not include it in the repository. To do so, create a .gitignore file and add localkeys.py to it.
 
 ### weather.py
+
     - This file contains the code for the main program.
     - The main program takes in a city name as a parameter and returns the weather data for that city.
     - The main program utilizes the geocoding function to get the latitude and longitude of the city.
@@ -91,7 +91,7 @@ Before running this program, ensure you have the following prerequisites:
 - *GitHub Copilot* was used to generate the code for the geocoding as well as weather function.
 - *Autocomplete suggestions* were provided by Copilot, which reduced the time taken to write the code.
 
-- *Parsing*: The responses recieved from OpenWeatherMap had many fields, but based on our requirement, Copilot was able to parse the response and provide us with the only required fields non-erroneously. 
+- *Parsing*: The responses recieved from OpenWeatherMap had many fields, but based on our requirement, Copilot was able to parse the response and provide us with the only required fields non-erroneously.
 
 - *Exception Handling*: Copilot was able to provide us with the correct exception handling code for the API key error.
 
@@ -103,30 +103,28 @@ This program includes the following features:
 
 python
 def get_key():
-    API_KEY = "<Your API Key>"
+    API_KEY = "Your API Key"
     return API_KEY
-
 
 - The geocoding function is used to get the latitude and longitude of a given city.
 - The program utilizes the OpenWeatherMap API to retrieve weather data.
 - The program constructs the URL for the Weather API call and retrieves the response from it.
 - Exception handling is used to handle any key errors that may occur.
 
-## Usage
+## Usage(Continued)
 
 To use this program, follow these steps:
 
 - Install the required dependencies by running the following command:
 
-    
     pip install -r requirements.txt
-    
 
-- Update the localkeys.py file with your OpenWeatherMap API key. Replace <Your API Key> with your actual API key.
+- Update the localkeys.py file with your OpenWeatherMap API key. Replace "Your API Key" with your actual API key.
 
 - In your Python code, import the necessary libraries and the get_key and geocoding functions:
 
 ## Contributing Authors
+
 - Saksham Kumar ([Polymath-Saksh](https://github.com/Polymath-Saksh))
 - Aloukik Joshi ([aloukikjoshi](https://github.com/aloukikjoshi))
 - Nihal Pandey ([neurotoxin5060](https://github.com/neurotoxin5060))
