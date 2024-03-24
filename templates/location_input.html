@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="stats-info">
-          <p class="p-stats" id="cloud-percent">{{weather_data.cloudiness}}%</p>
+          <p class="p-stats" id="cloud-percent">{{weather_data.cloudiness}}</p>
           <div class="icon-container">
             <object type="image/svg+xml" data="{% static 'icons/cloud.svg' %}" class="cloud-svg"></object>
           </div>
@@ -167,7 +167,6 @@
       </div>
     </div>
   </div>
-  <!-- <script src="{% static 'js/temp.js' %}"></script> -->
   <script src="{% static 'js/index.js' %}"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -184,5 +183,4 @@
     });
   </script>
 </body>
-
 </html>
