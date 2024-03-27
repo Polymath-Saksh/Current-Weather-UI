@@ -2,6 +2,10 @@
 
 This project utilizes the OpenWeatherMap Geocoding API to convert a city name to its corresponding latitude and longitude coordinates. It provides a simple way to retrieve the geographic information of a city using the OpenWeatherMap service.
 
+## Interface Preview
+
+![Example Image](Eg1.png)
+
 ## Prerequisites
 
 Before running this program, ensure you have the following prerequisites:
@@ -12,14 +16,20 @@ Before running this program, ensure you have the following prerequisites:
      This file will contain the API key for the OpenWeatherMap API. The API key is stored in the variable API_KEY.
 - An API key from OpenWeatherMap. You can sign up for a free account at [OpenWeatherMap](https://openweathermap.org/) and obtain an API key.
 
-## Usage of GitHub Copilot
+## Usage
 
-- *GitHub Copilot* was used to generate the code for the geocoding as well as weather function.
-- *Autocomplete suggestions* were provided by Copilot, which reduced the time taken to write the code.
+To use this program, follow these steps:
 
-- *Parsing*: The responses recieved from OpenWeatherMap had many fields, but based on our requirement, Copilot was able to parse the response and provide us with the only required fields non-erroneously.
+- Open the terminal and navigate to the directory where the main code file is located.
+- Run the following commands:
 
-- *Exception Handling*: Copilot was able to provide us with the correct exception handling code for the API key error.
+    ```bash
+    pip install -r requirements.txt
+    # Update the localkeys.py file with your OpenWeatherMap API key. 
+    # Replace "Your API Key" with your actual API key.
+    python manage.py runserver
+    ```
+
 
 ## Features
 
@@ -27,30 +37,16 @@ This program includes the following features:
 
 - A user-defined function called get_key where the API key is stored in the variable API_KEY and returns the value of the API key to the main code.
 
-```python
-def get_key():
-    API_KEY = "Your API Key"
-    return API_KEY
-```
+    ```python
+    def get_key():
+        API_KEY = "Your API Key"
+        return API_KEY
+    ```
 
 - The geocoding function is used to get the latitude and longitude of a given city.
 - The program utilizes the OpenWeatherMap API to retrieve weather data.
 - The program constructs the URL for the Weather API call and retrieves the response from it.
 - Exception handling is used to handle any key errors that may occur.
-
-## Usage(Continued)
-
-To use this program, follow these steps:
-
-- Install the required dependencies by running the following command:
-
-```python
-    pip install -r requirements.txt
-```
-
-- Update the localkeys.py file with your OpenWeatherMap API key. Replace "Your API Key" with your actual API key.
-
-- In your Python code, import the necessary libraries and the get_key and geocoding functions:
 
 ## Contributing Authors
 
