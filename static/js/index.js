@@ -121,160 +121,77 @@ function beaufort(){
 beaufort();
 
 
-function center(){
-  var condition = document.getElementById('temp-desc').innerText;
+function center() {
+    var condition = document.getElementById('temp-desc').innerText;
     var dayTime = document.getElementById('day-time').innerText;
     var icon = document.getElementById('weather-svg');
-    var cloudpct = document.getElementById('cloud-percent').innerText;
+    var cloudpct = Number(document.getElementById('cloud-percent').innerText);
     var idf_2;
 
-    if (condition === "Clear") {
-        if (dayTime === "Day") {
-            idf_2 = "clear-day";
-        }
-        else {
-            idf_2 = "clear-night";
-        }
-    }
-    else if (condition === "Clouds") {
-        if (cloudpct >= 90) {
-            idf_2 = "cloudy";
-        }
-        else if (cloudpct >= 70 && dayTime === "Day") {
-            idf_2 = "overcast-day";
-        }
-        else if (cloudpct >= 70 && dayTime === "Night"){
-            idf_2 = "overcast-night";
-        }
-        else if (dayTime === "Day") {
-            idf_2 = "partly-cloudy-day";
-        }
-        else {
-            idf_2 = "partly-cloudy-night";
-        }
-    }
-    else if (condition === "Rain") {
-        if (cloudpct > 70) {
-            idf_2 = "rain";
-        }
-        else if (cloudpct <= 70 && dayTime === "Day") {
-            idf_2 = "partly-cloudy-day-rain";
-        }
-        else {
-            idf_2 = "partly-cloudy-night-rain";
-        }
-    }
-    else if (condition === "Drizzle") {
-        if (cloudpct > 70) {
-            idf_2 = "drizzle";
-        }
-        else if (cloudpct <= 70 && dayTime === "Day") {
-            idf_2 = "partly-cloudy-day-drizzle";
-        }
-        else {
-            idf_2 = "partly-cloudy-night-drizzle";
-        }
-    }
-    else if (condition === "Thunderstorm") {
-        if (dayTime === "Day") {
-            idf_2 = "thunderstorm-day";
-        }
-        else {
-            idf_2 = "thunderstorm-night"
-        }
-    }
-    else if (condition === "Snow") {
-        if (cloudpct > 70) {
-            idf_2 = "snow";
-        }
-        else if (cloudpct <= 70 && dayTime === "Day") {
-            idf_2 = "partly-cloudy-day-snow";
-        }
-        else {
-            idf_2 = "partly-cloudy-night-snow";
-        }
-    }
-    else if (condition === "Mist") {
-        idf_2 = "mist";
-    }
-    else if (condition === "Smoke") {
-        if (cloudpct > 70) {
-            idf_2 = "smoke";
-        }
-        else if (cloudpct <= 70 && dayTime === "Day") {
-            idf_2 = "partly-cloudy-day-smoke";
-        }
-        else {
-            idf_2 = "partly-cloudy-night-smoke";
-        }
-    }
-    else if (condition === "Haze") {
-        if (cloudpct >= 90) {
-            idf_2 = "haze";
-        }
-        else if (cloudpct >= 70) {
-            if (dayTime === "Day") {
-                idf_2 = "partly-cloudy-day-haze";
-            }
-            else {
-                idf_2 = "partly-cloudy-night-haze";
-            }
-        }
-        else {
-            if (dayTime === "Day") {
-                idf_2 = "haze-day";
-            }
-            else {
-                idf_2 = "haze-night";
-            }
-        }
-    }
-    else if (condition === "Dust") {
-        if (cloudpct >= 70) {
-            idf_2 = "dust";
-        }
-        else {
-            if (dayTime === "Day") {
-                idf_2 = "dust-day";
-            }
-            else {
-                idf_2 = "dust-night";
-            }
-        }
-    }
-    else if (condition === "Tornado") {
-        idf_2 = "tornado";
-    }
-    else if (condition === "Fog"){
-        if (cloudpct >= 90) {
-            idf_2 = "fog";
-        }
-        else if (cloudpct >= 70) {
-            if (dayTime === "Day") {
-                idf_2 = "partly-cloudy-day-fog";
-            }
-            else {
-                idf_2 = "partly-cloudy-night-fog";
-            }
-        }
-        else {
-            if (dayTime === "Day") {
-                idf_2 = "fog-day";
-            }
-            else {
-                idf_2 = "fog-night";
-            }
-        }
-    }
-    else {
-        idf_2 = "not-available"
+    switch (condition) {
+        case "Clear":
+            idf_2 = (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "clear-day" : "clear-night";
+            break;
+        case "Clouds":
+            idf_2 = cloudpct >= 90 ? "cloudy" :
+                (cloudpct >= 70 && (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise")) ? "overcast-day" :
+                (cloudpct >= 70 && dayTime === "Night") ? "overcast-night" :
+                (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "partly-cloudy-day" :
+                "partly-cloudy-night";
+            break;
+        case "Rain":
+            idf_2 = cloudpct > 70 ? "rain" :
+                (cloudpct <= 70 && (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise")) ? "partly-cloudy-day-rain" :
+                "partly-cloudy-night-rain";
+            break;
+        case "Drizzle":
+            idf_2 = cloudpct > 70 ? "drizzle" :
+                (cloudpct <= 70 && (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise")) ? "partly-cloudy-day-drizzle" :
+                "partly-cloudy-night-drizzle";
+            break;
+        case "Thunderstorm":
+            idf_2 = (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "thunderstorms-day" : "thunderstorms-night";
+            break;
+        case "Snow":
+            idf_2 = cloudpct > 70 ? "snow" :
+                (cloudpct <= 70 && (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise")) ? "partly-cloudy-day-snow" :
+                "partly-cloudy-night-snow";
+            break;
+        case "Mist":
+            idf_2 = "mist";
+            break;
+        case "Smoke":
+            idf_2 = cloudpct > 70 ? "smoke" :
+                (cloudpct <= 70 && (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise")) ? "partly-cloudy-day-smoke" :
+                "partly-cloudy-night-smoke";
+            break;
+        case "Haze":
+            idf_2 = cloudpct >= 90 ? "haze" :
+                (cloudpct >= 70) ? ((dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "partly-cloudy-day-haze" : "partly-cloudy-night-haze") :
+                (dayTime === "Day") ? "haze-day" : "haze-night";
+            break;
+        case "Dust":
+            idf_2 = cloudpct >= 70 ? "dust" :
+                (dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "dust-day" :
+                "dust-night";
+            break;
+        case "Tornado":
+            idf_2 = "tornado";
+            break;
+        case "Fog":
+            idf_2 = cloudpct >= 90 ? "fog" :
+                (cloudpct >= 70) ? ((dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "partly-cloudy-day-fog" : "partly-cloudy-night-fog") :
+                ((dayTime === "Day" || dayTime === "Sunset" || dayTime === "Sunrise") ? "fog-day" : "fog-night");
+            break;
+        default:
+            idf_2 = "not-available";
     }
 
-    var url_2 = "static/icons/"+idf_2+".svg";
-    icon.setAttribute('data', url_2)
+    icon.setAttribute('data', `static/icons/${idf_2}.svg`);
 }
 
 center();
+
 
 window.onload = function() {
     var formSubmitted = sessionStorage.getItem("formSubmitted");

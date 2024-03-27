@@ -73,7 +73,7 @@ def program(location):
             "year": curr_date[2],
             "day_night": day_or_night,
             "curr_time": str(current_time).split()[1][:8],
-            "city": city[0].upper() + city[1:]
+            "city": ' '.join([w.capitalize() for w in city.split(' ')])[0].upper() + city[1:]
             }
         return output
     else:
