@@ -61,4 +61,4 @@ This project is licensed under MIT License - see the [LICENSE](LICENSE) file for
 
 Copyright &copy; to the contributing authors and the respective trademark owners.
 
-[License-Badge]:        https://img.shields.io/github/license/Polymath-Saksh/Current-Weather-UI?style=social&logo=github&logoColor=black&color=white
+[License-Badge]:https://img.shields.io/github/license/Polymath-Saksh/Current-Weather-UI?style=social&logo=github&logoColor=black&color=white
