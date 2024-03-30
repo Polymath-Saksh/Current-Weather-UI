@@ -1,4 +1,4 @@
-# Current Weather Forcast using OpenWeatherMap API [![License: MIT][License-Badge]](LICENSE.md)
+# Current Weather Forecast using OpenWeatherMap API [![License: MIT][License-Badge]](LICENSE.md)
 
 This project utilizes the OpenWeatherMap Geocoding API to convert a city name to its corresponding latitude and longitude coordinates. It provides a simple way to retrieve the geographic information of a city using the OpenWeatherMap service.
 
