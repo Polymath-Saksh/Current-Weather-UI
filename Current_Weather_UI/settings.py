@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['sakshamkr1.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -137,3 +137,5 @@ STATIC_URL = '/static/' # This is the URL where Django will look for static file
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = ['sakshamkr1.pythonanywhere.com']
