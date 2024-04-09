@@ -4,7 +4,9 @@ This project utilizes the OpenWeatherMap Geocoding API to convert a city name to
 
 ## Interface Preview
 
-![Example Image](Eg1.png)
+![Interface Preview](Eg1.png)
+![Interface Preview](Eg2.png)
+![Interface Preview](Eg3.png)
 
 ## Prerequisites
 
