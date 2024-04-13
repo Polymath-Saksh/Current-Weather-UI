@@ -6,6 +6,10 @@ This project utilizes the OpenWeatherMap Geocoding API to convert a city name to
 
 
 
+https://github.com/Polymath-Saksh/Current-Weather-UI/assets/67389168/f535295d-272f-48c2-9af3-9ddc9868a9b2
+
+
+
 ## Prerequisites
 
 Before running this program, ensure you have the following prerequisites:
