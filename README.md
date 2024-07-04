@@ -15,6 +15,10 @@ https://github.com/Polymath-Saksh/Current-Weather-UI/assets/67389168/f535295d-27
 Before running this program, ensure you have the following prerequisites:
 
 - Python 3 installed
+- Django installed. If it is not installed run the below command.(Optional)
+  ```bash
+  pip install django
+  ```
 - requests library installed (can be installed via pip install requests)
 - Create a file called localkeys.py in the same directory as the main code file.
      This file will contain the API key for the OpenWeatherMap API. The API key is stored in the variable API_KEY.
