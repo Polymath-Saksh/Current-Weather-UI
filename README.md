@@ -20,7 +20,7 @@ Before running this program, ensure you have the following prerequisites:
   pip install django
   ```
 - requests library installed (can be installed via pip install requests)
-- Create a file called localkeys.py in the same directory as the main code file.
+- Create a file called secret.py in the 'weather' directory.
      This file will contain the API key for the OpenWeatherMap API. The API key is stored in the variable API_KEY.
 - An API key from OpenWeatherMap. You can sign up for a free account at [OpenWeatherMap](https://openweathermap.org/) and obtain an API key.
 
@@ -43,7 +43,7 @@ To use this program, follow these steps:
 
 This program includes the following features:
 
-- A user-defined function called get_key where the API key is stored in the variable API_KEY and returns the value of the API key to the main code.
+- A user-defined function called get_key for 'secret.py' where the API key is stored in the variable API_KEY and returns the value of the API key to the main code.
 
     ```python
     def get_key():
